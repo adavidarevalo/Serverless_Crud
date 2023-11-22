@@ -1,0 +1,22 @@
+[
+  {
+    "primerNombre": "José",
+    "segundoNombre": "Felix",
+    "primerApellido": "Ribas",
+    "segundoApellido": "Caldera",
+    "fechaNacimiento": "2000-01-20T00:00:00.000Z",
+    "tipoIdentificacion": "cc",
+    "numeroIdentificacion": "3131588",
+    "sueldo": 2000.0
+  },
+  {
+    "primerNombre": "Kelvin",
+    "segundoNombre": "Rafael",
+    "primerApellido": "Mosquera",
+    "segundoApellido": "Betancourt",
+    "fechaNacimiento": "1970-06-20T00:00:00.000Z",
+    "tipoIdentificacion": "nit",
+    "numeroIdentificacion": "66654847",
+    "sueldo": 3000.0
+  }
+]
