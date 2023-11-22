@@ -3,6 +3,8 @@
 import { Sequelize } from 'sequelize-typescript';
 import { User } from '../model/user';
 
+export type Dialect = 'mysql' | 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'db2' | 'snowflake' | 'oracle';
+
 class Database {
   public sequelize: Sequelize | undefined;
 
@@ -13,10 +15,10 @@ class Database {
   private async connectToDatabase() {
     this.sequelize = new Sequelize({
       database: 'PRACTICE',
-      username: 'admin',
-      password: 'adminRoot',
-      host: 'database-2.cedr0jraxxnt.us-east-1.rds.amazonaws.com',
-      dialect: 'mysql',
+      username: process.env.DATABASE_USER,
+      password: process.env.DATABASE_PASSWORD,
+      host: process.env.DATABASE_URL,
+      dialect: process.env.DATABASE_DIALECT as Dialect,
       pool: {
         max: 5,
         min: 0,
