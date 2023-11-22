@@ -21,7 +21,6 @@ const serverlessConfiguration: AWS = {
     },
     region: (process.env.AWS_REGION || 'us-east-1') as AWS['provider']['region'],
   },
-  // import the function via paths
   functions: { employees },
   package: { individually: true },
   custom: {

@@ -5,7 +5,7 @@ export const userSchema = {
   properties: {
     firstName: { type: 'string', maxLength: 20 },
     lastName: { type: 'string', maxLength: 20 },
-    birthDate: { type: 'date' },
+    birthDate: { type: 'string', format: 'date-time' },
     idType: { type: 'string', enum: ['cc', 'pas'] },
     id: { type: 'string' },
     salary: { type: 'number' },
@@ -21,4 +21,5 @@ export const updateUserSchema = {
     birthDate: { type: 'date' },
     salary: { type: 'number' },
   },
+  required: [],
 };
