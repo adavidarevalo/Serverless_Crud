@@ -18,7 +18,8 @@ export const updateUserSchema = {
   properties: {
     firstName: { type: 'string', maxLength: 20 },
     lastName: { type: 'string', maxLength: 20 },
-    birthDate: { type: 'date' },
+    birthDate: { type: 'string', format: 'date-time' },
+    idType: { type: 'string', enum: ['cc', 'pas'] },
     salary: { type: 'number' },
   },
   required: [],

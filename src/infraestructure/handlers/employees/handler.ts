@@ -1,26 +1,27 @@
 /** @format */
 import { middyfy } from '@libs/lambda';
 import { APIGatewayProxyEvent } from 'aws-lambda';
-import { getUserList } from 'src/application/controllers/employees';
+import { createUser, deleteUser, getUserList, updateUser } from 'src/application/controllers/employees';
 import { responseHttp } from 'src/infraestructure/helpers/response';
 
 const employeesActions = async (event: APIGatewayProxyEvent) => {
-  console.log('XXX');
-  const { httpMethod, path, body } = event;
+  const { httpMethod, path, body, pathParameters } = event;
   try {
     if (httpMethod === 'POST' && path === '/employees') {
-      console.log('🚀 ~ file: handler.ts:9 ~ employeesActions ~ body:', body);
-      // const newUser = await createUser()
-      return responseHttp(true, {
-        message: 'Create Lists',
-      });
+      const newUser = await createUser(body as any);
+      return responseHttp(true, newUser);
     }
     if (httpMethod === 'GET' && path === '/employees') {
       const userList = await getUserList();
-      console.log('🚀 ~ file: handler.ts:20 ~ employeesActions ~ userList:', userList);
-      return responseHttp(true, {
-        message: 'Get Lists',
-      });
+      return responseHttp(true, userList);
+    }
+    if (httpMethod === 'DELETE' && pathParameters?.id) {
+      const user = await deleteUser(pathParameters?.id);
+      return responseHttp(true, user);
+    }
+    if (httpMethod === 'PUT' && pathParameters?.id) {
+      const user = await updateUser(pathParameters?.id, body as any);
+      return responseHttp(true, user);
     }
   } catch (error) {
     console.log(error);

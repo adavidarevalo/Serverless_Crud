@@ -1,6 +1,6 @@
 /** @format */
 import { handlerPath } from '@libs/handler-resolver';
-import { userSchema, updateUserSchema } from './../../schema/user_schema';
+import { updateUserSchema, userSchema } from './../../schema/user_schema';
 
 export default {
   handler: `${handlerPath(__dirname)}/handler.employeesActionsFn`,
